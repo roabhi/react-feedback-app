@@ -1,11 +1,15 @@
+import { FaTimes } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 import Card from './shared/Card'
 
-const FeedbackItem = (props) => {
+const FeedbackItem = ({ handleDelete, even, item }) => {
   return (
-    <Card even={props.even}>
-      <div className="num-display">{props.item.rating}</div>
-      <div className="text-display">{props.item.text}</div>
+    <Card even={even}>
+      <div className="num-display">{item.rating}</div>
+      <button onClick={() => handleDelete(item.id)} className="close">
+        <FaTimes color="purple" />
+      </button>
+      <div className="text-display">{item.text}</div>
     </Card>
   )
 }

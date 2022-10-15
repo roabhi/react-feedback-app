@@ -17,8 +17,7 @@ ul {
   list-style: none;
 }
 
-.container,
-.feedback-list {
+.container {
   max-width: 768px;
   margin: auto;
   padding: 0 20px;

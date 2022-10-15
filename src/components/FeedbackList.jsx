@@ -1,18 +1,19 @@
 import Proptypes from 'prop-types'
 import FeedbackItem from './FeedbackItem'
 
-const FeedbackList = (props) => {
-  if (!props.feedback || props.feedback.length == 0) {
+const FeedbackList = ({ feedback, handleDelete }) => {
+  if (!feedback || feedback.length === 0) {
     return <p>No feedback yet</p>
   }
 
   return (
     <div className="feedback-list">
-      {props.feedback.map((item, index) => (
+      {feedback.map((item, index) => (
         <FeedbackItem
           key={item.id}
+          handleDelete={handleDelete}
           item={item}
-          even={index % 2 != 0 ? true : false}
+          even={index % 2 !== 0 ? true : false}
         />
       ))}
     </div>
