@@ -1,12 +1,16 @@
 import { FaTimes } from 'react-icons/fa'
+import { useContext } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 import PropTypes from 'prop-types'
 import Card from './shared/Card'
 
-const FeedbackItem = ({ handleDelete, even, item }) => {
+const FeedbackItem = ({ even, item }) => {
+  const { deleteFeedback } = useContext(FeedbackContext)
+
   return (
     <Card even={even}>
       <div className="num-display">{item.rating}</div>
-      <button onClick={() => handleDelete(item.id)} className="close">
+      <button onClick={() => deleteFeedback(item.id)} className="close">
         <FaTimes color="purple" />
       </button>
       <div className="text-display">{item.text}</div>
@@ -16,6 +20,7 @@ const FeedbackItem = ({ handleDelete, even, item }) => {
 
 FeedbackItem.propTypes = {
   item: PropTypes.object.isRequired,
+  even: PropTypes.bool.isRequired,
 }
 
 export default FeedbackItem
