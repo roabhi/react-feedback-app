@@ -20,7 +20,7 @@ ul {
 .container {
   max-width: 768px;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 20px 5rem 20px;
 }
 
 header {
@@ -193,8 +193,12 @@ input:focus {
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
  * document */
 .about-link {
-  display: flex;
-  justify-content: flex-end;
+  /* display: flex;
+  justify-content: flex-end; */
+  position: fixed;
+  bottom: 1rem;
+  right: 2rem;
+  padding: 0 2rem 1rem 0;
 }
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
