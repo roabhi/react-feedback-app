@@ -1,31 +1,34 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ({ children }) => {
-  const [feedback, setFeedback] = useState([
-    {
-      id: 1,
-      text: 'This is the first feedback',
-      rating: 10,
-    },
-    {
-      id: 2,
-      text: 'This is the second feedback',
-      rating: 7,
-    },
-    {
-      id: 3,
-      text: 'This is the third feedback',
-      rating: 8,
-    },
-  ])
+  const [feedback, setFeedback] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
   })
+
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
+
+  //Fetach feedback
+
+  const fetchFeedback = async () => {
+    //const response = await fetch(`http://localhost:5000/feedback`)
+    const response = await fetch(
+      `http://localhost:5000/feedback?_sort=id&_order=desc`
+    )
+
+    const data = await response.json()
+
+    setFeedback(data)
+    setIsLoading(false)
+  }
 
   //Add feedback
   const addFeedback = (newFeedback) => {
@@ -62,12 +65,13 @@ export const FeedbackProvider = ({ children }) => {
   return (
     <FeedbackContext.Provider
       value={{
-        feedback: feedback,
-        feedbackEdit: feedbackEdit, // ? This is the STATE
-        deleteFeedback: deleteFeedback,
-        addFeedback: addFeedback,
-        editFeedback: editFeedback, // ? This is the FUNCTION
-        updateFeedback: updateFeedback,
+        feedback: feedback, // ?This is a State
+        feedbackEdit: feedbackEdit, // ? This is the STATE editing Feedback
+        isLoading: isLoading, // ? This is a State
+        deleteFeedback: deleteFeedback, // ? This is a function
+        addFeedback: addFeedback, // ? This is a function
+        editFeedback: editFeedback, // ? This is the FUNCTION editing Feedback
+        updateFeedback: updateFeedback, // ? This is a function
       }}
     >
       {children}
