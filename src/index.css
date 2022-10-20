@@ -36,7 +36,7 @@ ul {
 
 .container {
   max-width: 768px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 20px 5rem 20px;
 }
 
@@ -57,6 +57,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+  padding-top: 5rem;
 }
 
 .card {
@@ -74,7 +75,11 @@ header {
 }
 
 .card.even {
-  background-color: #eaeaea;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.card.even div.text-display {
+  color: rgb(255, 106, 149);
 }
 
 .card h2 {

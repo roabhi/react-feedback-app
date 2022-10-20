@@ -7,7 +7,7 @@ const RatingSelect = ({ select }) => {
   const { feedbackEdit } = useContext(FeedbackContext)
 
   useEffect(() => {
-    setSelected(feedbackEdit.item.rating)
+    setSelected(feedbackEdit.item.rating ? feedbackEdit.item.rating : 10)
   }, [feedbackEdit])
 
   const handleChange = (e) => {
