@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const Card = (props) => {
+const Card = ({ children, even, reverse }) => {
   /**
    * ? In this case the props are used via
    * ? children method of React
@@ -27,7 +27,7 @@ const Card = (props) => {
 
   return (
     <>
-      <div className={`card ${props.even ? 'even' : ''}`}>{props.children}</div>
+      <div className={`card ${even ? 'even' : ''}`}>{children}</div>
     </>
   )
 }

@@ -38,6 +38,8 @@ ul {
   max-width: 768px;
   margin: 0 auto;
   padding: 0 20px 5rem 20px;
+  position: relative;
+  z-index: 10;
 }
 
 .spinner-container {
@@ -72,14 +74,6 @@ header {
 .card.reverse {
   background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
-}
-
-.card.even {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.card.even div.text-display {
-  color: rgb(255, 106, 149);
 }
 
 .card h2 {
@@ -231,6 +225,7 @@ input:focus {
   bottom: 1rem;
   right: 2rem;
   padding: 0 2rem 1rem 0;
+  z-index: 0;
 }
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
